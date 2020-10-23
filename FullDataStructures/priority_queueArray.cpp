@@ -75,27 +75,27 @@ void Enqueue() // Complexity O(n)
 			else
 			pq[rear] = ele;
 			
-		}
-		else if( ele >= pq[rear-1] )
-		{
-			pq[rear] = ele;
-		}
-		else
-		{
+	}
+	else if( ele >= pq[rear-1] )
+	{
+		pq[rear] = ele;
+	}
+	else
+	{
         for ( i = front; i < rear; ++ i )
         {
-			if ( ele <= pq[i] )
-			{
-				for ( j = rear - 1; j >= i; -- j )
-					pq[j+1] = pq[j];
-				pq[i] = ele;
-				break;
-			}
+		if ( ele <= pq[i] )
+		{
+			for ( j = rear - 1; j >= i; -- j )
+				pq[j+1] = pq[j];
+			pq[i] = ele;
+			break;
 		}
+	}
 		
-		}
-		cout<<"Data "<<ele<<" Inserted successfully\n";
-		rear ++;
+	}
+	cout<<"Data "<<ele<<" Inserted successfully\n";
+	rear ++;
 	}
     
 }
