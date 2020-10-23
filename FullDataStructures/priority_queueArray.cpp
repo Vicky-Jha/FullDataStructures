@@ -3,7 +3,7 @@
 # define max 20
 using namespace std;
 
-int front = 0, rare = 0,ele,pq[max], i,j,temp,del;
+int front = 0, rear = 0,ele,pq[max], i,j,temp,del;
 int loc = 0,flag=0;
 void Enqueue(void);
 void Dequeue(void);
@@ -40,14 +40,14 @@ int main()
 }
 int Full()
 {
-    if(rare == max)
+    if(rear == max)
         return 1;
     else
         return 0;
 }
 int Empty()
 {
-    if(rare == front)
+    if(rear == front)
         return 1;
     else
         return 0;
@@ -61,45 +61,41 @@ void Enqueue() // Complexity O(n)
         printf("Enter Queue data\n");
         scanf("%d",&ele);
         
-        if( front == rare )
+        if( front == rear )
         {
-			pq[front] = ele;rare ++;
-			cout<<"Data "<<ele<<" Inserted successfully\n";
+			pq[front] = ele;
 		}
-		else if( front == rare - 1 )
+		else if( front == rear - 1 )
 		{
 			if ( pq[front] > ele )
 			{
-			pq[rare] = pq[front];
+			pq[rear] = pq[front];
 			pq[front] = ele;
 			}
 			else
-			pq[rare] = ele;
+			pq[rear] = ele;
 			
-			rare++;
-			cout<<"Data "<<ele<<" Inserted successfully\n";
 		}
-		else if( ele >= pq[rare-1] )
+		else if( ele >= pq[rear-1] )
 		{
-			pq[rare] = ele;
-			rare ++;
-			cout<<"Data "<<ele<<" Inserted successfully\n";
+			pq[rear] = ele;
 		}
 		else
 		{
-        for ( i = front; i < rare; ++ i )
+        for ( i = front; i < rear; ++ i )
         {
 			if ( ele <= pq[i] )
 			{
-				for ( j = rare - 1; j >= i; -- j )
+				for ( j = rear - 1; j >= i; -- j )
 					pq[j+1] = pq[j];
 				pq[i] = ele;
-				rare ++;
-				cout<<"Data "<<ele<<" Inserted successfully\n";
 				break;
 			}
 		}
+		
 		}
+		cout<<"Data "<<ele<<" Inserted successfully\n";
+		rear ++;
 	}
     
 }
@@ -118,7 +114,7 @@ void Display()
         printf("Queue is Empty\n");
     else
     {
-        for (i = front ; i<rare ; i++)
+        for (i = front ; i<rear ; i++)
         {
             printf("%d ",pq[i]);
         }
