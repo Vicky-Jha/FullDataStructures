@@ -1,3 +1,9 @@
+/*
+Heap sort
+1. create max heap
+2. delete elements from top
+*/
+
 #include <bits/stdc++.h>
 #include <assert.h>
 #define lli long long int
@@ -16,7 +22,7 @@ void maxHeap(int arr[], int n)  {
         }
     }
 }
-void heapSort(int arr[], int n)
+void heapSort(int arr[], int n) 
 {
   int swapPos = n - 1;
   for(int i = 0; i < n - 1; ++i){
