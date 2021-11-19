@@ -16,7 +16,7 @@ class SuffixTrie {
         this->root = new TrieNode();
         this->populateSuffixTrieFrom(str);
     }
-    
+// time:    O(N^2)   Space: O(N^2)
     void populateSuffixTrieFrom(string str) {
         for(int i = 0; i < str.length(); ++i) {
             this->insertSubstringStartingAt(i, str);
@@ -35,7 +35,7 @@ class SuffixTrie {
         }
         node->children.insert({this->endSymbol, nullptr});
     }
-    
+// time:    O(M)   Space: O(1)
     bool contains(string str) {
         TrieNode *node = this->root;
         for(char letter : str) {
