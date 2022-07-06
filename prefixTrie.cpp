@@ -19,7 +19,7 @@ class Trie {
     void populateTrieFrom(vector<string>& words) {
         for(string& w : words) { // O(words.length)
             TrieNode* node = this->root;
-            for(char& c : w) { // O(max(w1,w2,w3...wn).length) ~ O(10) ~ O(1)
+            for(char& c : w) { // O(max(w1,w2,w3...wn).length)
                 this->insertIntoTrie(c, node); // O(1)
             }
             node->children.insert({this->endSymbol, nullptr});
